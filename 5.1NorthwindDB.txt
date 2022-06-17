@@ -1,0 +1,65 @@
+1. SELECT * FROM customers 
+	//selects all from customers table
+
+2. SELECT DISTINCT state_province FROM customers 
+	//returns only 1 of each state from customers
+
+3. SELECT * FROM customers WHERE last_name LIKE 'a%' 
+	//returns all customers whose last name starts with a
+
+4. SELECT id FROM orders WHERE id LIMIT 10 
+	//returns first 10 id records from orders table
+
+5. SELECT * FROM customers WHERE job_title = 'Owner' 
+	//returns all customers whose job title is Owner
+
+6. SELECT * FROM customers WHERE first_name IS NOT NULL
+	//returns all customers whose first name is not null
+
+7. SELECT * FROM customers ORDER BY state_province, city
+	//returns all customers ordered by state, then city
+
+8. INSERT INTO customers (id, company, last_name, first_name, email_address, job_title, business_phone, home_phone, mobile_phone, fax_number, address, city, state_province, zip_postal_code, country_region, web_page, notes, attachments)
+VALUES (100, 'IBM', 'Jaeger', 'Eren', null, 'titan', '123-456-7890', '234-567-8910', null, '734-234-3456', '234TrostCt', 'Trost', 'PD', 12569, 'Paradie', null, null, null)
+	//inserts a new row into customers with all data
+
+9. UPDATE customers SET country_region = 'Out West' WHERE state_province = 'CA'
+	//sets country_region to Out West if the state is 'CA'
+
+10. DELETE FROM customers WHERE company = 'IBM'
+	//removes any row of data that has IBM listed under company
+
+11. SELECT AVG(shipping_fee) 'Average Shipping Fee' FROM orders;
+11. SELECT MAX(shipping_fee) FROM orders;
+11. SELECT MIN(shipping_fee) FROM orders
+	//gives average, max, and min from shipping_fee in orders
+
+12.SELECT AVG(shipping_fee) FROM orders ORDER BY customer_id
+12.SELECT MAX(shipping_fee) FROM orders ORDER BY customer_id
+12 SELECT MIN(shipping_fee) FROM orders ORDER BY customer_id;
+
+13. SELECT * FROM orders WHERE customer_id = 27
+	//selects all rows from customer_id 27
+
+14. SELECT * FROM customers INNER JOIN orders ON customers.zip_postal_code = orders.ship_zip_postal_code
+	//combines customers and orders tables that have matching zip codes
+
+14. SELECT * FROM customers LEFT JOIN orders ON customers.city = orders.ship_city
+	//combines ALL customers and ONLY orders rows that have matching city vs ship_city
+
+14. SELECT * FROM customers RIGHT JOIN orders ON customers.city = orders.ship_city
+	//combines ONLY customers and ALL orders rows that have matching city vs ship_city
+
+15. SELECT * FROM customers INNER JOIN orders ON customers.zip_postal_code = orders.ship_zip_postal_code WHERE customers.city = 'Denver'
+	//inner joins all orders who have the same zip code from the city of Denver
+
+16. SELECT * FROM orders INNER JOIN customers ON orders.ship_city = customers.city WHERE orders.payment_type = 'Check'
+	//inner joins all orders who used a check to pay from the same city
+
+17. SELECT first_name FROM customers WHERE job_title = 'Owner'
+	//returns first names of all customers who have a job title of Owner
+
+18. SELECT first_name FROM customers WHERE address LIKE '123%' 
+	//returns first names of all customers whose address starts with 123
+
+
